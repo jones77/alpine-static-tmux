@@ -1,13 +1,12 @@
 from alpine:edge
 
-env http_proxy=http://prodproxy.bloomberg.com:80
-env https_proxy=http://prodproxy.bloomberg.com:80
-
 workdir /tmp
 run echo "http://nl.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories
 
 run apk update && apk upgrade && \
-    apk add ghc cabal make gcc musl-dev linux-headers bash file curl bsd-compat-headers autoconf automake protobuf-dev zlib-dev openssl-dev g++ upx
+    apk add ghc cabal make gcc musl-dev linux-headers bash file curl \
+    bsd-compat-headers autoconf automake protobuf-dev zlib-dev openssl-dev g++ \
+    upx
 
 env dest_prefix /usr
 
